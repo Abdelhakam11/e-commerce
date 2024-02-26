@@ -1,0 +1,30 @@
+@import "../../assets/variables.scss";
+
+.shop-sidebar-container {
+  color: $main-color;
+  &--title {
+    font-size: 2.2rem;
+    line-height: 2;
+  }
+  &--categories-list {
+    display: flex;
+    flex-direction: column;
+    &--item {
+      margin: 10px 20px;
+      font-size: 1.2rem;
+      & a {
+        text-decoration: none;
+        color: $main-color;
+        &:hover {
+          color: $foreground-color;
+        }
+      }
+    }
+  }
+}
+
+a.active {
+  color: $foreground-color;
+  border-bottom: 2px solid $foreground-color;
+  padding-bottom: 3px;
+}

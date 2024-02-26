@@ -1,0 +1,57 @@
+@import "../../assets/variables.scss";
+
+.navbar {
+  font-size: 2rem;
+
+  &--detials {
+    padding: 20px 0;
+    background-color: $main-color;
+    color: $text-color;
+    display: flex;
+    justify-content: center;
+    gap: 108px;
+    position: relative;
+    &--items-container {
+      position: absolute;
+      right: 4.2rem;
+    }
+  }
+
+  &--container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    &--icon-box {
+      margin-right: 2rem;
+      a {
+        text-decoration: none;
+        color: $main-color;
+        &:hover h1 {
+          transform: translateY(-5px) rotate(-2deg);
+          transition: all ease-in-out 1s;
+        }
+      }
+    }
+    &--items {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      &--categories-container {
+        padding-left: 6.4rem;
+        display: flex;
+        gap: 2.8rem;
+        font-size: 1.6rem;
+        &--category {
+          & a {
+            text-decoration: none;
+            color: $main-color;
+          }
+        }
+      }
+    }
+  }
+  .icon {
+    color: $secondary-color;
+  }
+}
