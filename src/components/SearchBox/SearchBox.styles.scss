@@ -1,14 +1,41 @@
 @import "../../assets/variables.scss";
 
 .search-box-container {
+  position: relative;
+  width: 30rem;
   .search-input {
+    border: none;
+    border-bottom: 3px solid black;
+    padding: 0.2rem;
+    width: 100%;
+    font-size: 1.5rem;
+    transition: all .3s ease;
+    &:focus {
+      outline: none;
+      border: 2px solid $foreground-color ;
+    }
   }
   .search-list {
+    opacity: .9;
+    width: 100%;
     position: absolute;
     font-size: 1rem;
-    max-height: 100px;
+    max-height: 200px;
     overflow: hidden;
-    overflow-y: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    -ms-overflow-style: none;
     background-color: rgba(128, 128, 128, 0.287);
+  }
+  .search-item {
+    border: 1px solid #ddd;
+    margin-top: -1px; /* Prevent double borders */
+    background-color: $text-color;
+    padding: 1.2rem;
+    font-size: 1.5rem;
+    color: $main-color;
+    width: 100%;
   }
 }

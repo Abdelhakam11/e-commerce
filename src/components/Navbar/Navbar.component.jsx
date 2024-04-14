@@ -3,11 +3,9 @@ import "./Navbar.styles.scss";
 import { getCategories } from "../../api/api";
 import { NavLink } from "react-router-dom";
 import SearchBox from "../SearchBox/SearchBox.component";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useSelector } from "react-redux";
+import IconsBox from "../IconsBox/IconsBox.component";
 
 export default function Navbar() {
-  const favouriteProducts = useSelector((state) => state.favouriteReducer.favouriteProducts);
   const message = "Free shipping on orders above Rs.1999/- for members";
   const [categories, setCategories] = useState([]);
 
@@ -19,7 +17,6 @@ export default function Navbar() {
     <div className="navbar">
       <div className="navbar--detials">
         <p>{message}</p>
-        <div className="navbar--detials--items-container">detials</div>
       </div>
       <div className="navbar--container">
         <div className="navbar--container--icon-box">
@@ -40,15 +37,11 @@ export default function Navbar() {
               </div>
             ))}
           </div>
-          <div className="navbar--container--items--search-box">
-            <SearchBox />
-            <span>
-              <FontAwesomeIcon className="icon" icon="fa-heart far" />
-              <span>{favouriteProducts.length}</span>
-            </span>
-            <span>
-              <FontAwesomeIcon className="icon" icon="fa-bag-shopping fas" />
-            </span>
+          <div className="navbar--container--items--boxes">
+            <div className="navbar--container--items--boxes--search-box">
+              <SearchBox />
+            </div>
+            <IconsBox />
           </div>
         </div>
       </div>

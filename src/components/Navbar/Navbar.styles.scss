@@ -2,6 +2,7 @@
 
 .navbar {
   font-size: 2rem;
+  overflow: hidden;
 
   &--detials {
     padding: 20px 0;
@@ -46,12 +47,22 @@
           & a {
             text-decoration: none;
             color: $main-color;
+            &:hover {
+              display: inline-block;
+              padding-bottom: 0.5rem;
+              border-bottom: 2px solid $foreground-color;
+              transform: translateY(-2px) scale(1.06);
+              transition: all 0.1s ease;
+            }
           }
         }
       }
+      &--boxes {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+      }
     }
   }
-  .icon {
-    color: $secondary-color;
-  }
 }
+

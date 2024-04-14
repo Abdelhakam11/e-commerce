@@ -11,9 +11,9 @@ export default function CardSlider({ products }) {
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    autoplay: true,
     autoplaySpeed: 5000,
     initialSlide: 0,
+    cssEase: "linear"
   };
 
   return (

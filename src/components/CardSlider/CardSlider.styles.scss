@@ -1,5 +1,9 @@
 @import "../../assets/variables.scss";
 
+.slick-track:has(.cart-alert-container) {
+  transform: translate3d(0px,0px,0px) !important;
+}
+
 .slick-slide {
   margin: 25px auto;
 }

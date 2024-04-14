@@ -1,0 +1,14 @@
+@import "../../assets/variables.scss";
+
+.add-to-cart-container{
+  font-size: 2rem;
+  padding: 20px;
+  background-color: $secondary-color;
+  border: 1px solid $main-color;
+  text-align: center;
+  &:hover{
+    background-color: $text-color;
+    color: $secondary-color;
+    cursor: pointer;
+  }
+}

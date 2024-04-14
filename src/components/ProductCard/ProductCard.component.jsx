@@ -5,6 +5,7 @@ import { memo } from "react";
 import { addProduct, removeProduct } from "../../redux/favouriteSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import AddToCartBtn from "../AddToCartBtn/AddToCartBtn.component";
 
 export default memo(function ProductCard({
   id,
@@ -56,6 +57,7 @@ export default memo(function ProductCard({
         <span className="product-card-container--details--title">{title}</span>
         <span className="product-card-container--details--price">{price}$</span>
       </div>
+      <AddToCartBtn id={id} />
     </div>
   );
 });

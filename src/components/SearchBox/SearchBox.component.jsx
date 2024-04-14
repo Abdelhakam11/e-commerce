@@ -29,6 +29,9 @@ export default function SearchBox() {
       msgRef.current.style.display = "block";
       setProducts([]);
     }
+    if (query.length === 0) {
+      msgRef.current.style.display = "none";
+    }
   }
   function queryClickHandle(title) {
     inputRef.current.value = title;
@@ -92,6 +95,7 @@ export default function SearchBox() {
         type="text"
         onChange={searchHandle}
         onKeyDown={queryKeysHandle}
+        placeholder="search"
       />
       <div
         ref={msgRef}

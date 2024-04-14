@@ -1,0 +1,21 @@
+@import "../../assets/variables.scss";
+
+.popup-container {
+  width: calc(100vw - (100vw - 100%));
+  min-height: 100vh;
+  position: absolute;
+  z-index: 9999;
+  top: 0;
+  left: 0;
+  background-color: rgba(255, 255, 255, 0.29);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &--content {
+    min-width: 80%;
+    background-color: white;
+    min-height: 90vh;
+    border-radius: 2rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  }
+}

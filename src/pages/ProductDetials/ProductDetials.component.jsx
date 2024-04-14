@@ -3,6 +3,8 @@ import "./ProductDetials.styles.scss";
 import { useParams } from "react-router-dom";
 import { getByCategory, getSingleProduct } from "../../api/api";
 import CardSlider from "../../components/CardSlider/CardSlider.component";
+import  AddToCartBtn  from "../../components/AddToCartBtn/AddToCartBtn.component";
+
 
 export default function ProductDetials() {
   const { id } = useParams();
@@ -16,6 +18,7 @@ export default function ProductDetials() {
       <div className="product-detials-container--product-detials">
         <CollectionPhotos productPhotos={product.images} />
         <DetialsCollection
+          id={id}
           title={product.title}
           brand={product.brand}
           price={product.price}
@@ -45,7 +48,7 @@ const CollectionPhotos = memo(function ({ productPhotos = [] }) {
 });
 
 const DetialsCollection = memo(function (props) {
-  const { title, price, rating, stock, description, brand } = props;
+  const { id, title, price, rating, stock, description, brand } = props;
 
   return (
     <div className="detials-collection">
@@ -61,6 +64,9 @@ const DetialsCollection = memo(function (props) {
         className="detials-collection--stars"
       ></div>
       <div className="detials-collection--stock">in stock: {stock}</div>
+      <div className="detials-collection--to-cart">
+        <AddToCartBtn id={id} />
+      </div>
     </div>
   );
 });

@@ -1,0 +1,15 @@
+@import "../../assets/variables.scss";
+
+.cart-alert-container{
+  position: fixed;
+  bottom: 3rem;
+  left: 3rem;
+  font-size: 2rem;
+  color: $text-color;
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px -3px #111;
+  padding: .5rem 4rem;
+  background: #25a000;
+  display: none;
+  z-index: 9999;
+}
