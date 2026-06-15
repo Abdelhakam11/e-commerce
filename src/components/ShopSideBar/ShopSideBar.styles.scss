@@ -1,30 +1,54 @@
 @import "../../assets/variables.scss";
 
 .shop-sidebar-container {
-  color: $main-color;
+  position: sticky;
+  top: 108px;
+
   &--title {
-    font-size: 2.2rem;
-    line-height: 2;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: $text-secondary;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid $border-color;
   }
+
   &--categories-list {
     display: flex;
     flex-direction: column;
+    gap: 0.2rem;
+
     &--item {
-      margin: 10px 20px;
-      font-size: 1.2rem;
-      & a {
+      a {
+        display: block;
+        font-size: 1.4rem;
+        font-weight: 500;
         text-decoration: none;
-        color: $main-color;
+        color: $text-secondary;
+        text-transform: capitalize;
+        padding: 0.9rem 1.2rem;
+        border-radius: $radius-sm;
+        transition: background $transition-fast, color $transition-fast;
+
         &:hover {
-          color: $foreground-color;
+          background: $light-color;
+          color: $main-color;
+        }
+
+        &.active {
+          background: $light-color;
+          color: $secondary-color;
+          font-weight: 600;
         }
       }
     }
   }
 }
 
-a.active {
-  color: $foreground-color;
-  border-bottom: 2px solid $foreground-color;
-  padding-bottom: 3px;
+@media (max-width: 900px) {
+  .shop-sidebar-container--categories-list {
+    display: none;
+  }
 }

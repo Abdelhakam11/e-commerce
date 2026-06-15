@@ -1,68 +1,218 @@
 @import "../../assets/variables.scss";
 
 .navbar {
-  font-size: 2rem;
-  overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: $surface;
+  border-bottom: 1px solid $border-color;
 
-  &--detials {
-    padding: 20px 0;
-    background-color: $main-color;
+  &__banner {
+    background: $main-color;
     color: $text-color;
+    text-align: center;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    letter-spacing: 0.04em;
+    font-weight: 400;
+  }
+
+  &__main {
     display: flex;
-    justify-content: center;
-    gap: 108px;
+    align-items: center;
+    padding: 0 4rem;
+    height: 6.4rem;
+    gap: 3.2rem;
     position: relative;
-    &--items-container {
-      position: absolute;
-      right: 4.2rem;
+  }
+
+  &__logo {
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: $main-color;
+    flex-shrink: 0;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 0.65;
     }
   }
 
-  &--container {
-    width: 100%;
-    padding: 20px;
+  &__links {
     display: flex;
-    &--icon-box {
-      margin-right: 2rem;
-      a {
-        text-decoration: none;
+    align-items: center;
+    gap: 0.4rem;
+    flex: 1;
+
+    a {
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: $text-secondary;
+      text-transform: capitalize;
+      letter-spacing: 0.01em;
+      white-space: nowrap;
+      padding: 0.6rem 1rem;
+      border-radius: $radius-sm;
+      transition: color $transition-fast, background $transition-fast;
+
+      &:hover {
         color: $main-color;
-        &:hover h1 {
-          transform: translateY(-5px) rotate(-2deg);
-          transition: all ease-in-out 1s;
-        }
+        background: $surface-alt;
+      }
+
+      &.active {
+        color: $secondary-color;
+        font-weight: 600;
+        background: $light-color;
       }
     }
-    &--items {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      &--categories-container {
-        padding-left: 6.4rem;
-        display: flex;
-        gap: 2.8rem;
-        font-size: 1.6rem;
-        &--category {
-          & a {
-            text-decoration: none;
-            color: $main-color;
-            &:hover {
-              display: inline-block;
-              padding-bottom: 0.5rem;
-              border-bottom: 2px solid $foreground-color;
-              transform: translateY(-2px) scale(1.06);
-              transition: all 0.1s ease;
-            }
-          }
-        }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    flex-shrink: 0;
+    margin-left: auto;
+  }
+}
+
+// ── All Categories dropdown ───────────────────────────────────────────────────
+
+.cat-menu {
+  position: relative;
+  flex-shrink: 0;
+
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: $main-color;
+    color: #fff;
+    border: none;
+    border-radius: $radius-sm;
+    padding: 0.85rem 1.4rem;
+    font-size: 1.35rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background $transition-fast;
+
+    svg {
+      width: 1.5rem;
+      height: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background: #333;
+    }
+
+    &:focus-visible {
+      outline: 3px solid $foreground-color;
+      outline-offset: 2px;
+    }
+  }
+
+  &__chevron {
+    width: 1.4rem !important;
+    height: 1.4rem !important;
+    transition: transform $transition-fast;
+
+    .cat-menu__btn--open & {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    background: $surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    z-index: 300;
+    min-width: 44rem;
+    padding: 1.2rem;
+    animation: cat-dropdown-appear 0.15s ease;
+  }
+
+  &__all-link {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: $main-color;
+    text-decoration: none;
+    padding: 0.9rem 1.2rem;
+    border-radius: $radius-sm;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid $border-color;
+    padding-bottom: 1.2rem;
+    letter-spacing: 0.01em;
+    transition: color $transition-fast, background $transition-fast;
+
+    &:hover {
+      color: $secondary-color;
+      background: $light-color;
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.3rem;
+
+    a {
+      display: block;
+      font-size: 1.35rem;
+      font-weight: 500;
+      color: $text-secondary;
+      text-decoration: none;
+      text-transform: capitalize;
+      padding: 0.75rem 1.2rem;
+      border-radius: $radius-sm;
+      transition: background $transition-fast, color $transition-fast;
+
+      &:hover {
+        background: $surface-alt;
+        color: $main-color;
       }
-      &--boxes {
-        display: flex;
-        flex-direction: row;
-        gap: 2rem;
+
+      &.active {
+        color: $secondary-color;
+        font-weight: 600;
+        background: $light-color;
       }
     }
   }
 }
 
+@keyframes cat-dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar__main {
+    padding: 0 2rem;
+  }
+
+  .navbar__links {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .navbar__actions .search-box-container {
+    display: none;
+  }
+}
