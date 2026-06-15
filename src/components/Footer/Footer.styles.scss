@@ -1,0 +1,248 @@
+@import '../../assets/variables.scss';
+
+.footer {
+  background: $main-color;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.4rem;
+
+  &__top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr 1.6fr;
+    gap: 5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 6rem 4rem;
+  }
+
+  // ── Brand column ────────────────────────────────────────────────────────────
+
+  &__logo {
+    display: inline-block;
+    font-size: 2.4rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 1.4rem;
+
+    &:hover {
+      color: $foreground-color;
+    }
+  }
+
+  &__tagline {
+    font-size: 1.4rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 2.4rem;
+    max-width: 26rem;
+  }
+
+  &__socials {
+    display: flex;
+    gap: 1.2rem;
+  }
+
+  &__social-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.8rem;
+    height: 3.8rem;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: border-color $transition-fast, color $transition-fast,
+      background $transition-fast;
+
+    svg {
+      width: 1.7rem;
+      height: 1.7rem;
+    }
+
+    &:hover {
+      border-color: $foreground-color;
+      color: $foreground-color;
+      background: rgba(224, 180, 0, 0.08);
+    }
+  }
+
+  // ── Link columns ─────────────────────────────────────────────────────────────
+
+  &__heading {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+
+  &__links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    a {
+      color: rgba(255, 255, 255, 0.58);
+      text-decoration: none;
+      transition: color $transition-fast;
+      text-transform: capitalize;
+
+      &:hover {
+        color: $foreground-color;
+      }
+    }
+  }
+
+  // ── Newsletter column ─────────────────────────────────────────────────────
+
+  &__newsletter-text {
+    font-size: 1.4rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.55);
+    margin-bottom: 1.8rem;
+  }
+
+  &__newsletter-form {
+    display: flex;
+    gap: 0;
+  }
+
+  &__newsletter-input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-right: none;
+    border-radius: $radius-sm 0 0 $radius-sm;
+    padding: 1rem 1.4rem;
+    font-size: 1.4rem;
+    font-family: inherit;
+    color: #fff;
+    outline: none;
+    transition: border-color $transition-fast, background $transition-fast;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    &:focus {
+      border-color: rgba(255, 255, 255, 0.35);
+      background: rgba(255, 255, 255, 0.1);
+    }
+  }
+
+  &__newsletter-btn {
+    background: $foreground-color;
+    color: $main-color;
+    border: none;
+    border-radius: 0 $radius-sm $radius-sm 0;
+    padding: 1rem 1.8rem;
+    font-size: 1.4rem;
+    font-weight: 700;
+    font-family: inherit;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: lighten(#e0b400, 8%);
+    }
+  }
+
+  &__newsletter-note {
+    margin-top: 1rem;
+    font-size: 1.15rem;
+    color: rgba(255, 255, 255, 0.3);
+  }
+
+  // ── Bottom bar ────────────────────────────────────────────────────────────
+
+  &__bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2.4rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  &__copy {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.35);
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+    flex-wrap: wrap;
+  }
+
+  &__powered {
+    color: rgba(255, 255, 255, 0.28);
+    font-size: 1.2rem;
+
+    &::before {
+      content: '·';
+      margin-right: 1.6rem;
+      color: rgba(255, 255, 255, 0.15);
+    }
+
+    strong {
+      color: $foreground-color;
+      font-weight: 600;
+    }
+  }
+
+  &__payments {
+    display: flex;
+    gap: 0.8rem;
+
+    span {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      padding: 0.4rem 1rem;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.45);
+      letter-spacing: 0.02em;
+    }
+  }
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+
+@media (max-width: 1100px) {
+  .footer__top {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    padding: 4rem 2.4rem;
+    gap: 3.2rem;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 2.4rem;
+    gap: 1.4rem;
+  }
+
+  .footer__payments {
+    flex-wrap: wrap;
+  }
+
+  .footer__tagline {
+    max-width: 100%;
+  }
+}
