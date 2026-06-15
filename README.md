@@ -1,70 +1,120 @@
-# Getting Started with Create React App
+# Stylehive — E-Commerce Store
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  A modern, fully-featured e-commerce storefront built with React 18, TypeScript, and TanStack Query. Products are sourced from
+  the [DummyJSON](https://dummyjson.com) API.
 
-## Available Scripts
+  ---
 
-In the project directory, you can run:
+  ## Features
 
-### `npm start`
+  - **Product browsing** — infinite scroll with automatic pagination
+  - **Category filtering** — sidebar + header nav + "All Categories" dropdown
+  - **Product search** — live search with debounced suggestions dropdown
+  - **Product detail page** — full info with similar products section
+  - **Shopping cart** — add, remove, increment/decrement quantity
+  - **Favourites** — save and unsave products
+  - **Skeleton loading** — shimmer placeholders while data loads
+  - **Code splitting** — route-level lazy loading for fast initial load
+  - **Responsive design** — mobile-first SCSS with BEM methodology
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+  ---
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+  ## Tech Stack
 
-### `npm test`
+  | Layer | Library |
+  |---|---|
+  | UI | React 18 |
+  | Language | TypeScript (strict mode) |
+  | Routing | React Router v6 |
+  | Server state | TanStack Query v5 |
+  | Client state | Redux Toolkit (`createEntityAdapter`) |
+  | Styling | SCSS + BEM |
+  | Icons | FontAwesome 6 |
+  | Carousel | React Slick |
+  | API | DummyJSON REST API |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  ---
 
-### `npm run build`
+  ## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  src/
+  ├── api/            # Typed fetch functions
+  ├── assets/         # Global styles, variables, routes
+  ├── components/     # Reusable UI components
+  │   ├── Navbar/
+  │   ├── Footer/
+  │   ├── SearchBox/
+  │   ├── ProductCard/
+  │   ├── CardSlider/
+  │   ├── ShopSideBar/
+  │   ├── IconsBox/
+  │   └── ui/         # Skeleton loaders
+  ├── hooks/          # Custom React hooks
+  ├── lib/            # QueryClient + query key factory
+  ├── pages/          # Route-level page components
+  │   ├── Home/
+  │   ├── Shop/
+  │   ├── ProductDetials/
+  │   └── Layout/
+  ├── redux/          # Store, cartSlice, favouriteSlice
+  └── types/          # Shared TypeScript interfaces
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+  ---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+  ## Getting Started
 
-### `npm run eject`
+  ### Prerequisites
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+  - Node.js ≥ 16
+  - npm ≥ 8
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+  ### Install dependencies
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+  ```bash
+  npm install
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+  Run in development
 
-## Learn More
+  npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  Opens at http://localhost:3000.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  Production build
 
-### Code Splitting
+  npm run build
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+  ---
+  Key Architectural Decisions
 
-### Analyzing the Bundle Size
+  TanStack Query for all data fetching — replaces useEffect-based fetching with automatic caching, background refetching, and
+  deduplication. Cache is set to 5 minutes stale / 10 minutes gc.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+  Normalized Redux with createEntityAdapter — cart and favourites stored as { ids, entities } dictionaries enabling O(1) lookups
+  instead of O(n) .find() / .some() calls.
 
-### Making a Progressive Web App
+  Infinite scroll via useInfiniteQuery — loads 20 products per page, appending as the user scrolls. fetchNextPage is called when
+  within 300px of the bottom.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+  React.lazy route splitting — each page is a separate chunk. A PageFallback skeleton is shown via <Suspense> while the chunk
+  loads.
 
-### Advanced Configuration
+  ---
+  Available Scripts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+  ┌───────────────┬───────────────────────────────────┐
+  │    Script     │            Description            │
+  ├───────────────┼───────────────────────────────────┤
+  │ npm start     │ Start development server          │
+  ├───────────────┼───────────────────────────────────┤
+  │ npm run build │ Create optimised production build │
+  ├───────────────┼───────────────────────────────────┤
+  │ npm test      │ Run test suite                    │
+  ├───────────────┼───────────────────────────────────┤
+  │ npm run eject │ Eject CRA config (irreversible)   │
+  └───────────────┴───────────────────────────────────┘
 
-### Deployment
+  ---
+  Credits
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+  - Product data — DummyJSON
+  - Powered by Abdelhakam Elewa
