@@ -1,5 +1,10 @@
-@import "../../assets/variables.scss";
+@import '../../assets/variables.scss';
 
 .shop-by-search-container {
-
+  &--empty {
+    padding: 6rem 4rem;
+    font-size: 1.6rem;
+    color: $text-secondary;
+    text-align: center;
+  }
 }

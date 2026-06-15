@@ -1,93 +1,161 @@
 @import "../../assets/variables.scss";
+
+.product-details__loading,
+.product-details__error {
+  padding: 6rem 4rem;
+  font-size: 1.6rem;
+  color: $text-secondary;
+  text-align: center;
+}
+
 .product-detials-container {
-  padding: 3rem;
-  font-size: 2rem;
+  padding: 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  font-size: 1.6rem;
 
   &--product-detials {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-bottom: 10rem;
-    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    margin-bottom: 8rem;
+  }
+}
 
-    .detials-collection {
-      width: 45%;
+.photos-collection {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
 
-      &--product-title {
-        font-size: 3.5rem;
-        margin-bottom: 4rem;
-        position: relative;
-        &--brand {
-          font-size: 1.5rem;
-          position: absolute;
-          top: -1rem;
-          background-color: $foreground-color;
-          color: $text-color;
-          padding: 0.5rem;
-          border-radius: 20px;
-        }
-      }
-      &--price {
-        font-size: 3rem;
-        display: block;
-        margin-bottom: 2rem;
-      }
-      &--stars {
-        $percent: calc(var(--rating) / 5 * 100%);
-        $star-size: 5rem;
-        $star-color: #fff;
-        $star-background: #fc0;
+  &--photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: $radius-md;
+    border: 2px solid $border-color;
+    transition: border-color $transition-fast, transform $transition-base;
 
-        display: inline-block;
-        font-size: 60px;
-        font-family: Times; 
-        line-height: 1;
-        color: $star-color;
-
-        &::after {
-          content: "★★★★★";
-          letter-spacing: 3px;
-          background: linear-gradient(
-            90deg,
-            $star-background $percent,
-            $star-color $percent
-          );
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
-      &--to-cart{
-        width: 60%;
-        margin-top: 2rem;
-      }
+    &:hover {
+      cursor: zoom-in;
+      border-color: $foreground-color;
+      transform: scale(1.02);
     }
+  }
+}
 
-    .photos-collection {
-      display: flex;
-      justify-content: space-between;
-      width: 49%;
-      flex-wrap: wrap;
-      gap: 1%;
+.detials-collection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
 
-      &--photo {
-        max-width: 49.5%;
-        border: 1px solid grey;
-        margin-bottom: 1%;
-        &:hover {
-          cursor: zoom-in;
-          border: 10px $foreground-color solid;
-          padding: 10px;
-          transform: scale(1.2);
-          transition: all ease-in-out 1s;
-        }
-      }
+  &--brand-tag {
+    display: inline-block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: $light-color;
+    color: $secondary-color;
+    padding: 0.4rem 1.2rem;
+    border-radius: 100px;
+    width: fit-content;
+  }
+
+  &--product-title {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: $main-color;
+    letter-spacing: -0.01em;
+  }
+
+  &--price {
+    font-size: 3rem;
+    font-weight: 700;
+    color: $secondary-color;
+  }
+
+  &--stars {
+    $percent: calc(var(--rating) / 5 * 100%);
+
+    display: inline-block;
+    font-size: 3.2rem;
+    font-family: Times, serif;
+    line-height: 1;
+    color: #fff;
+
+    &::after {
+      content: "★★★★★";
+      letter-spacing: 4px;
+      background: linear-gradient(
+        90deg,
+        #fc0 $percent,
+        #ddd $percent
+      );
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 
-  .similar-products {
-    width: 100%;
-    &--title {
-      text-align: center;
+  &--description {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: $text-secondary;
+  }
+
+  &--stock {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $success-color;
+  }
+
+  &--to-cart {
+    margin-top: 0.8rem;
+
+    .add-to-cart-btn {
+      padding: 1.6rem 2.4rem;
+      font-size: 1.5rem;
+      border-radius: $radius-sm;
+      margin: 0;
+      width: 100%;
     }
+  }
+}
+
+.similar-products {
+  border-top: 1px solid $border-color;
+  padding-top: 5rem;
+
+  &--title {
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .product-detials-container {
+    padding: 2.4rem;
+
+    &--product-detials {
+      grid-template-columns: 1fr;
+      gap: 3.2rem;
+    }
+  }
+
+  .photos-collection {
+    grid-template-columns: repeat(4, 1fr);
+
+    &--photo {
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+@media (max-width: 560px) {
+  .photos-collection {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

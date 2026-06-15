@@ -1,9 +1,45 @@
 @import "../../assets/variables.scss";
 
-.slick-track:has(.cart-alert-container) {
-  transform: translate3d(0px,0px,0px) !important;
-}
+.card-slider {
+  .slick-list {
+    margin: 0 -1.2rem;
+    padding-bottom: 1.2rem;
+  }
 
-.slick-slide {
-  margin: 25px auto;
+  .slick-slide > div {
+    padding: 0 1.2rem;
+  }
+
+  .slick-dots {
+    bottom: -2.8rem;
+
+    li button::before {
+      font-size: 8px;
+      color: $border-color;
+      opacity: 1;
+    }
+
+    li.slick-active button::before {
+      color: $secondary-color;
+      opacity: 1;
+    }
+  }
+
+  .slick-prev,
+  .slick-next {
+    z-index: 1;
+
+    &::before {
+      color: $secondary-color;
+      font-size: 2.4rem;
+    }
+  }
+
+  .slick-prev {
+    left: -3.5rem;
+  }
+
+  .slick-next {
+    right: -3.5rem;
+  }
 }

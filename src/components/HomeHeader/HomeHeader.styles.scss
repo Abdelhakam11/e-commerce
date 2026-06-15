@@ -2,54 +2,81 @@
 
 .home-header-container {
   width: 100%;
-  color: $text-color;
-  min-height: 900px;
+  min-height: 88vh;
   background: linear-gradient(
-      to bottom right,
-      rgba(0, 0, 0, 0.6),
-      rgba(255, 255, 255, 0.5)
+      to bottom,
+      rgba(0, 0, 0, 0.55) 0%,
+      rgba(0, 0, 0, 0.28) 55%,
+      rgba(0, 0, 0, 0.62) 100%
     ),
     url("../../assets/imgs/home-page-header-img.jpg");
   background-size: cover;
   background-position: center;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  margin-bottom: 100px;
+  align-items: center;
+  color: $text-color;
+
   &--contain-box {
-    width: 50%;
+    max-width: 700px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 4rem;
+    gap: 2.4rem;
+    padding: 0 2.4rem;
+  }
 
-    &--main-title {
-      font-size: 4rem;
+  &--contain-box--main-title {
+    font-size: 6rem;
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  &--contain-box--sub-title {
+    font-size: 1.9rem;
+    font-weight: 300;
+    line-height: 1.6;
+    opacity: 0.88;
+    max-width: 480px;
+  }
+
+  &--contain-box--btn {
+    display: inline-block;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $main-color;
+    background: $text-color;
+    padding: 1.6rem 4.8rem;
+    border-radius: 2px;
+    transition: background $transition-base, transform $transition-base,
+      box-shadow $transition-base;
+
+    &:hover {
+      background: $foreground-color;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
     }
 
-    &--sub-title {
-      font-size: 3rem;
+    &:active {
+      transform: translateY(-1px);
     }
-    &--btn {
-      font-weight: 700;
-      font-size: 2rem;
-      text-decoration: none;
-      cursor: pointer;
-      color: $main-color;
-      border: $main-color 1px solid;
-      padding: .5rem;
-      margin-bottom: 5rem;
-      transition: all ease-out .5s;
-      &:hover{
-        color: $text-color;
-        background-color: $foreground-color;
-        border: $secondary-color 1px solid;
-        transform: scale(1.1) translateY(-5px);
-      }
-      &:active{
-        transform: scale(.9) translateY(5px);
-      }
+  }
+}
+
+@media (max-width: 768px) {
+  .home-header-container {
+    min-height: 70vh;
+
+    &--contain-box--main-title {
+      font-size: 3.6rem;
+    }
+
+    &--contain-box--sub-title {
+      font-size: 1.6rem;
     }
   }
 }

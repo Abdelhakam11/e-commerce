@@ -1,11 +1,40 @@
+@import "../../assets/variables.scss";
+
 .shop-container {
-  display: flex;
-  gap: 2%;
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: calc(100vh - 108px);
+
   &--sidebar {
-    width: 15%;
+    border-right: 1px solid $border-color;
+    padding: 2.4rem 1.6rem;
+    background: $surface;
   }
+
   &--details {
-    width: 83%;
-    padding: 0 20px;
+    padding: 0 2.4rem 4rem;
+    background: $surface-alt;
+  }
+}
+
+@media (max-width: 900px) {
+  .shop-container {
+    grid-template-columns: 1fr;
+
+    &--sidebar {
+      border-right: none;
+      border-bottom: 1px solid $border-color;
+      padding: 1.6rem 2rem;
+
+      .shop-sidebar-container--categories-list {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+      }
+
+      .shop-sidebar-container--categories-list--item {
+        margin: 0;
+      }
+    }
   }
 }

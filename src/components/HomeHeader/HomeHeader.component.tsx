@@ -1,6 +1,6 @@
-import React from "react";
-import "./HomeHeader.styles.scss";
-import { Link } from "react-router-dom";
+import React from 'react';
+import './HomeHeader.styles.scss';
+import { Link } from 'react-router-dom';
 
 export default function HomeHeader() {
   return (
@@ -12,7 +12,9 @@ export default function HomeHeader() {
         <p className="home-header-container--contain-box--sub-title">
           Elevate your style with our fashion-forward collection.
         </p>
-        <Link className="home-header-container--contain-box--btn" to="/shop">SHOP NOW</Link>
+        <Link className="home-header-container--contain-box--btn" to="/shop">
+          SHOP NOW
+        </Link>
       </div>
     </div>
   );

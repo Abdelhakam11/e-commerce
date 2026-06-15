@@ -1,5 +1,11 @@
 @import "../../assets/variables.scss";
 
 .shop-all-products-container {
-
+  &--loading {
+    text-align: center;
+    padding: 2.4rem;
+    color: $text-secondary;
+    font-size: 1.4rem;
+    letter-spacing: 0.02em;
+  }
 }
