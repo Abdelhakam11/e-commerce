@@ -1,41 +1,227 @@
-@import "../../assets/variables.scss";
+@import '../../assets/variables.scss';
 
-.search-box-container {
+.search-box {
   position: relative;
-  width: 30rem;
-  .search-input {
-    border: none;
-    border-bottom: 3px solid black;
-    padding: 0.2rem;
-    width: 100%;
-    font-size: 1.5rem;
-    transition: all .3s ease;
-    &:focus {
-      outline: none;
-      border: 2px solid $foreground-color ;
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    background: $surface;
+    border: 1.5px solid $border-color;
+    border-radius: 100px;
+    padding: 0 1.2rem;
+    gap: 0.8rem;
+    height: 4.2rem;
+    transition: border-color $transition-fast, box-shadow $transition-fast;
+
+    &:focus-within {
+      border-color: $secondary-color;
+      box-shadow: 0 0 0 3px rgba(197, 155, 5, 0.15);
     }
   }
-  .search-list {
-    opacity: .9;
-    width: 100%;
-    position: absolute;
-    font-size: 1rem;
-    max-height: 200px;
-    overflow: hidden;
-    overflow-y: scroll;
-    &::-webkit-scrollbar {
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $text-secondary;
+    flex-shrink: 0;
+    width: 1.8rem;
+    height: 1.8rem;
+
+    svg {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__spinner {
+    display: block;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: 2px solid $border-color;
+    border-top-color: $secondary-color;
+    border-radius: 50%;
+    animation: search-spin 0.7s linear infinite;
+  }
+
+  &__input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    font-size: 1.4rem;
+    font-family: inherit;
+    color: $main-color;
+    min-width: 0;
+    width: 20rem;
+    outline: none;
+
+    &::placeholder {
+      color: $text-secondary;
+    }
+
+    &::-webkit-search-cancel-button {
       display: none;
     }
-    -ms-overflow-style: none;
-    background-color: rgba(128, 128, 128, 0.287);
   }
-  .search-item {
-    border: 1px solid #ddd;
-    margin-top: -1px; /* Prevent double borders */
-    background-color: $text-color;
-    padding: 1.2rem;
-    font-size: 1.5rem;
-    color: $main-color;
+
+  &__clear {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: $text-secondary;
+    padding: 0;
+    border-radius: 50%;
+    width: 2.2rem;
+    height: 2.2rem;
+    flex-shrink: 0;
+    transition: background $transition-fast, color $transition-fast;
+
+    svg {
+      width: 1.3rem;
+      height: 1.3rem;
+    }
+
+    &:hover {
+      background: $border-color;
+      color: $main-color;
+    }
+  }
+
+  &__hint {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+    background: $surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-sm;
+    padding: 0.8rem 1.4rem;
+    font-size: 1.2rem;
+    color: $text-secondary;
+    box-shadow: $shadow-sm;
+    z-index: 200;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    min-width: 36rem;
+    background: $surface;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    box-shadow: $shadow-lg;
+    overflow: hidden;
+    z-index: 200;
+    animation: search-dropdown-appear 0.15s ease;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 0.9rem 1.4rem;
+    cursor: pointer;
+    transition: background $transition-fast;
+    outline: none;
+    border: none;
+
+    &:hover,
+    &:focus {
+      background: $surface-alt;
+    }
+
+    &-img {
+      width: 4.4rem;
+      height: 4.4rem;
+      object-fit: cover;
+      border-radius: $radius-sm;
+      flex-shrink: 0;
+      border: 1px solid $border-color;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+      min-width: 0;
+    }
+
+    &-title {
+      font-size: 1.4rem;
+      font-weight: 500;
+      color: $main-color;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &-price {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: $secondary-color;
+    }
+  }
+
+  &__footer {
+    display: block;
     width: 100%;
+    padding: 0.9rem 1.4rem;
+    border-top: 1px solid $border-color;
+    font-size: 1.2rem;
+    color: $text-secondary;
+    text-align: center;
+    background: $surface-alt;
+    cursor: pointer;
+    transition: background $transition-fast;
+    border: none;
+    outline: none;
+
+    strong {
+      color: $main-color;
+      font-weight: 600;
+    }
+
+    &:hover,
+    &:focus {
+      background: $border-color;
+    }
+  }
+}
+
+@keyframes search-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes search-dropdown-appear {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .search-box__input {
+    width: 14rem;
+  }
+
+  .search-box__dropdown {
+    min-width: 28rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-box {
+    display: none;
   }
 }
